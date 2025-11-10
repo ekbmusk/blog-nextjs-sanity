@@ -1,6 +1,7 @@
 import Image from "next/image"
 import InteractiveWeb from "@/components/InteractiveWeb"
 import Link from "next/link"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import { motion } from 'framer-motion'
 import { useParallax } from '@/hooks/useParallax'
 import { client } from '@/lib/sanity.client'
@@ -24,6 +25,7 @@ export default function Home({ posts, news }: { posts: any, news: any }) {
           color="#60a5fa"
           opacity={0.35}
         />
+        <SpeedInsights />
 
         {/* Animated text overlay */}
         <motion.div

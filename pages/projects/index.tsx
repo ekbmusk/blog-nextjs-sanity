@@ -15,7 +15,7 @@ export default function ProjectsPage({ posts }: { posts: any[] }) {
                     {posts.map((post: any) => (
                         <div
                             key={post._id}
-                            className="bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden"
+                            className="bg-white rounded-xl shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-gray-100 overflow-hidden"
                         >
                             {post.coverImage && (
                                 <Image
@@ -23,7 +23,7 @@ export default function ProjectsPage({ posts }: { posts: any[] }) {
                                     alt={post.title}
                                     width={600}
                                     height={400}
-                                    className="w-full h-48 object-cover"
+                                    className="w-full h-48 object-cover rounded-t-xl"
                                 />
                             )}
                             <div className="p-6">
