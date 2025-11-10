@@ -23,8 +23,21 @@ export default function App({ Component, pageProps }: AppProps<SharedPageProps>)
   const router = useRouter()
 
   useEffect(() => {
-    const start = () => setLoading(true)
-    const end = () => setLoading(false)
+    let t: any = null
+
+    const start = () => {
+      setLoading(true)
+      clearTimeout(t)
+      // optional: delay start small to avoid flicker
+      t = setTimeout(() => { }, 50)
+    }
+
+    const end = () => {
+      clearTimeout(t)
+      // force minimum visible loader 500ms
+      t = setTimeout(() => setLoading(false), 500)
+    }
+
 
     router.events.on('routeChangeStart', start)
     router.events.on('routeChangeComplete', end)
@@ -41,6 +54,7 @@ export default function App({ Component, pageProps }: AppProps<SharedPageProps>)
     <>
       <Navbar />
       {loading && <StemOrbitLoader backdrop={0.35} />}
+
 
       {/* Animated page transitions */}
       <main>
