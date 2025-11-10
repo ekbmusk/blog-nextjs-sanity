@@ -1,0 +1,397 @@
+[
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "fields": [
+          {
+            "description": "Important for SEO and accessiblity.",
+            "name": "alt",
+            "type": "string",
+            "title": "Alternative text"
+          }
+        ],
+        "name": "picture",
+        "type": "image"
+      }
+    ],
+    "name": "author",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "title",
+        "type": "string"
+      },
+      {
+        "options": {
+          "source": "title",
+          "maxLength": 96
+        },
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "custom"
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "slug",
+        "type": "slug"
+      },
+      {
+        "of": [
+          {
+            "marks": {
+              "annotations": [
+                {
+                  "i18nTitleKey": "inputs.portable-text.annotation.link",
+                  "options": {
+                    "modal": {
+                      "type": "popover"
+                    }
+                  },
+                  "fields": [
+                    {
+                      "validation": [
+                        {
+                          "rules": [
+                            {
+                              "flag": "uri",
+                              "constraint": {
+                                "options": {
+                                  "scheme": [
+                                    "/^http$/",
+                                    "/^https$/",
+                                    "/^tel$/",
+                                    "/^mailto$/"
+                                  ],
+                                  "allowRelative": true,
+                                  "relativeOnly": false,
+                                  "allowCredentials": false
+                                }
+                              }
+                            }
+                          ],
+                          "level": "error"
+                        }
+                      ],
+                      "description": "A valid web, email, phone, or relative link.",
+                      "name": "href",
+                      "type": "url",
+                      "title": "Link"
+                    }
+                  ],
+                  "name": "link",
+                  "type": "object"
+                }
+              ],
+              "decorators": [
+                {
+                  "value": "strong",
+                  "title": "Strong"
+                },
+                {
+                  "value": "em",
+                  "title": "Italic"
+                },
+                {
+                  "value": "code",
+                  "title": "Code"
+                },
+                {
+                  "value": "underline",
+                  "title": "Underline"
+                },
+                {
+                  "value": "strike-through",
+                  "title": "Strike"
+                }
+              ]
+            },
+            "lists": [
+              {
+                "value": "bullet",
+                "title": "Bulleted list"
+              },
+              {
+                "value": "number",
+                "title": "Numbered list"
+              }
+            ],
+            "styles": [
+              {
+                "value": "normal",
+                "title": "Normal"
+              },
+              {
+                "value": "h1",
+                "title": "Heading 1"
+              },
+              {
+                "value": "h2",
+                "title": "Heading 2"
+              },
+              {
+                "value": "h3",
+                "title": "Heading 3"
+              },
+              {
+                "value": "h4",
+                "title": "Heading 4"
+              },
+              {
+                "value": "h5",
+                "title": "Heading 5"
+              },
+              {
+                "value": "h6",
+                "title": "Heading 6"
+              },
+              {
+                "value": "blockquote",
+                "title": "Quote"
+              }
+            ],
+            "of": [],
+            "type": "block"
+          },
+          {
+            "options": {
+              "hotspot": true
+            },
+            "fields": [
+              {
+                "description": "Caption displayed below the image.",
+                "name": "caption",
+                "type": "string",
+                "title": "Image caption"
+              },
+              {
+                "description": "Important for SEO and accessiblity.",
+                "name": "alt",
+                "type": "string",
+                "title": "Alternative text"
+              }
+            ],
+            "type": "image"
+          }
+        ],
+        "name": "content",
+        "type": "array"
+      },
+      {
+        "name": "excerpt",
+        "type": "text"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "name": "coverImage",
+        "type": "image"
+      },
+      {
+        "name": "date",
+        "type": "datetime"
+      },
+      {
+        "to": [
+          {
+            "type": "author"
+          }
+        ],
+        "name": "author",
+        "type": "reference"
+      }
+    ],
+    "name": "post",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "initialValue": "Blog.",
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "This field is the title of your blog.",
+        "name": "title",
+        "type": "string"
+      },
+      {
+        "initialValue": [
+          {
+            "_key": "9f1a629887fd",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "4a58edd077880",
+                "_type": "span",
+                "text": "A statically generated blog example using "
+              },
+              {
+                "_key": "4a58edd077881",
+                "_type": "span",
+                "text": "Next.js"
+              },
+              {
+                "_key": "4a58edd077882",
+                "_type": "span",
+                "text": " and "
+              },
+              {
+                "_key": "4a58edd077883",
+                "_type": "span",
+                "text": "Sanity"
+              },
+              {
+                "_key": "4a58edd077884",
+                "_type": "span",
+                "text": "."
+              }
+            ],
+            "markDefs": [
+              {
+                "_key": "ec5b66c9b1e0",
+                "_type": "link",
+                "href": "https://nextjs.org/"
+              },
+              {
+                "_key": "1f8991913ea8",
+                "_type": "link",
+                "href": "https://sanity.io/"
+              }
+            ],
+            "style": "normal"
+          }
+        ],
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "max",
+                "constraint": 155
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "Used both for the <meta> description tag for SEO, and the blog subheader.",
+        "of": [
+          {
+            "marks": {
+              "annotations": [
+                {
+                  "fields": [
+                    {
+                      "validation": [
+                        {
+                          "rules": [
+                            {
+                              "flag": "presence",
+                              "constraint": "required"
+                            }
+                          ],
+                          "level": "error"
+                        }
+                      ],
+                      "name": "href",
+                      "type": "string",
+                      "title": "URL"
+                    }
+                  ],
+                  "name": "link",
+                  "type": "object"
+                }
+              ]
+            },
+            "styles": [
+              {
+                "value": "normal",
+                "title": "Normal"
+              }
+            ],
+            "of": [],
+            "type": "block"
+          }
+        ],
+        "name": "description",
+        "type": "array"
+      },
+      {
+        "description": "Used for social media previews when linking to the index page.",
+        "fields": [
+          {
+            "initialValue": "A Next.js Blog with a Native Authoring Experience",
+            "name": "title",
+            "type": "string"
+          }
+        ],
+        "name": "ogImage",
+        "type": "object",
+        "title": "Open Graph Image"
+      }
+    ],
+    "name": "settings",
+    "type": "document"
+  }
+]

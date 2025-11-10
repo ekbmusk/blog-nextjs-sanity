@@ -1,0 +1,1 @@
+export const fontsPromise = Promise.resolve("mock-fonts");
