@@ -3,7 +3,7 @@ import { UserIcon } from '@sanity/icons'
 
 export default defineType({
     name: 'professor',
-    title: 'Professors',
+    title: 'Профессорлар',
     type: 'document',
     icon: UserIcon,
     fields: [
@@ -28,11 +28,17 @@ export default defineType({
             validation: (rule) => rule.required(),
         }),
         defineField({
-            name: 'achievements',
-            title: 'Жетістіктері',
-            type: 'array',
-            of: [{ type: 'string' }],
-            description: 'List of key achievements or awards.',
+            name: 'photo',
+            title: 'Фото',
+            type: 'image',
+            options: { hotspot: true },
+        }),
+        defineField({
+            name: 'bio',
+            title: 'Қысқаша өмірбаяны',
+            type: 'text',
+            rows: 3,
+            description: 'Профессор туралы қысқаша ақпарат.',
         }),
         defineField({
             name: 'email',

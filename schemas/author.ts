@@ -3,7 +3,7 @@ import { defineField, defineType } from 'sanity'
 
 export default defineType({
   name: 'author',
-  title: 'Author',
+  title: 'Автор',
   icon: UserIcon,
   type: 'document',
   fields: [

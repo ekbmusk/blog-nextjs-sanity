@@ -38,7 +38,6 @@ export default function App({ Component, pageProps }: AppProps<SharedPageProps>)
       t = setTimeout(() => setLoading(false), 500)
     }
 
-
     router.events.on('routeChangeStart', start)
     router.events.on('routeChangeComplete', end)
     router.events.on('routeChangeError', end)
@@ -51,34 +50,32 @@ export default function App({ Component, pageProps }: AppProps<SharedPageProps>)
   }, [router])
 
   return (
-    <>
+    <div className="bg-bee-light-bg dark:bg-bee-dark-bg text-bee-light-text dark:text-bee-dark-text min-h-screen transition-colors duration-500">
       <Navbar />
+
       {loading && <StemOrbitLoader backdrop={0.35} />}
 
-
       {/* Animated page transitions */}
-      <main>
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={router.route}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.4, ease: 'easeInOut' }}
-            className="min-h-screen"
-          >
-            {previewMode ? (
-              <PreviewProvider perspective={previewPerspective} token={token}>
-                <Component {...pageProps} />
-              </PreviewProvider>
-            ) : (
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={router.route}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.4, ease: 'easeInOut' }}
+          className="min-h-screen"
+        >
+          {previewMode ? (
+            <PreviewProvider perspective={previewPerspective} token={token}>
               <Component {...pageProps} />
-            )}
-          </motion.div>
-        </AnimatePresence>
-      </main>
+            </PreviewProvider>
+          ) : (
+            <Component {...pageProps} />
+          )}
+        </motion.div>
+      </AnimatePresence>
 
       {previewMode && <VisualEditing />}
-    </>
+    </div>
   )
 }

@@ -74,6 +74,32 @@ export const newsBySlugQuery = groq`
   }
 `
 
+// PROFESSORS
+export const professorsQuery = groq`
+*[_type == "professor"] | order(name asc) {
+  _id,
+  name,
+  degree,
+  slug,
+  bio,
+  email,
+  phonenumber,
+  achievements,
+  "photo": photo.asset->url
+}`
+
+export const professorBySlugQuery = groq`
+*[_type == "professor" && slug.current == $slug][0] {
+  _id,
+  name,
+  degree,
+  bio,
+  email,
+  phonenumber,
+  achievements,
+  "photo": photo.asset->url
+}`
+
 // ===================== TS Types =====================
 
 export interface Author {

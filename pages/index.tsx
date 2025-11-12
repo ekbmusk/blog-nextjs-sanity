@@ -7,6 +7,7 @@ import { useParallax } from '@/hooks/useParallax'
 import { client } from '@/lib/sanity.client'
 import ContentCard from '@/components/ContentCard'
 import { indexQuery, newsListQuery } from '@/lib/sanity.queries'
+import SectionSeparator from "@/components/SectionSeparator"
 
 export default function Home({ posts, news }: { posts: any, news: any }) {
   const y = useParallax(0.06)
@@ -45,7 +46,7 @@ export default function Home({ posts, news }: { posts: any, news: any }) {
 
         <div className="absolute inset-0 bg-gradient-to-t from-transparent to-black/60 pointer-events-none" />
       </section>
-
+      <SectionSeparator />
       {/* OTHER PROJECTS */}
       <section className="max-w-6xl w-full py-16 px-6">
         <h2 className="text-3xl font-bold mb-8 text-gray-800 text-center">
@@ -64,7 +65,7 @@ export default function Home({ posts, news }: { posts: any, news: any }) {
           ))}
         </div>
       </section>
-
+      <SectionSeparator />
       {/* LATEST NEWS */}
       <section className="max-w-6xl w-full py-16 px-6">
         <h2 className="text-3xl font-bold mb-8 text-gray-800 text-center">
